@@ -1,0 +1,20 @@
+name: Release Workflow Agenda
+
+on:
+  push:
+    tags:
+      - 'v*.*.*'  # ativa quando uma tag semver é enviada
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout do código
+        uses: actions/checkout@v4
+
+      - name: Exibir informações da release
+        run: |
+          echo "Iniciando workflow de release..."
+          echo "Tag: ${{ github.ref_name }}"
+          echo "Commit: ${{ github.sha }}"
